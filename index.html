@@ -73,7 +73,7 @@
               </ul>
           </div>
           <div class="col s12 m6 l6 indigo lighten-4">Map</div>
-          <div class="col s12 m3 l3 indigo lighten-3">Graph</div>
+          <div class="col s12 m3 l3 indigo lighten-3" id="mylist"></div>
         </div>
         
         <h3>Covid-19 Dashboard</h3>
@@ -109,12 +109,37 @@
           </div>
           <div class="footer-copyright">
             <div class="container">
-            © 2020 Copyright Text
+            © 2020 Copyright xzhang
             <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
             </div>
           </div>
         </footer>
     
     </body>
+    
+    <script>
+        
+        makelist();
+        
+        function makelist() {
+            
+            data = [{pname:"NYC",cname:"USA",conf:218000},{pname:"Moscow",cname:"Russia",conf:212000},{pname:"Sao Paulo",cname:"Brazil",conf:100000}];
+            
+            mylist = document.getElementById("mylist");
+            
+            myhtml = "<ul class='collection'>";
+            for (i=0; i<data.length;i++) {
+                myhtml = myhtml + "<li class='collection-item avatar'>";
+                myhtml = myhtml + "<i class='material-icons circle'>folder</i>"
+                myhtml = myhtml + "<b>" + data[i]['pname'] + "</b><br>";
+                myhtml = myhtml + data[i]['conf'] + "</li>";
+            }
+            myhtml = myhtml + "</ul>";
+            
+            mylist.innerHTML = myhtml;
+            
+        }
+    
+    </script>
 
 </html>
