@@ -11,21 +11,28 @@
  </head>
     
  <body>
-     <div id="map" style="height:500px;"></div>
+     <div id="map" style="height:100%;"></div>
  </body>
     
  <script>
      // initialize the map
-      var map = L.map('map').setView([42.35, -71.08], 13);
+      var map = L.map('map').setView([42.35, -71.08], -9);
 
      // load a tile layer
       L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}.png',
         {
           attribution: 'Tiles by <a href="http://mapc.org">MAPC</a>, Data by <a href="http://mass.gov/mgis">MassGIS</a>',
           maxZoom: 17,
-          minZoom: 9
+          minZoom: 2.6
         }).addTo(map);
 
+        var circle = L.circle([42.35, -71.08], {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0.5,
+            radius: 500
+        }).addTo(map);
+     
 </script>
 
 
