@@ -12,7 +12,7 @@
     
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
        
-    <script src="06-15-2020.js"></script>
+    <script src="06-25-2020.js"></script>
         
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
         integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
@@ -20,6 +20,10 @@
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
         integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
         crossorigin=""></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js" integrity="sha256-nZaxPHA2uAaquixjSDX19TmIlbRNCOrf5HO1oHl5p70=" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.css" integrity="sha256-IvM9nJf/b5l2RoebiFno92E5ONttVyaEEsdemDC6iQA=" crossorigin="anonymous" />
 
         
     <style>
@@ -27,7 +31,25 @@
             background-color:#7986cb;
             padding-left: 20px;
         }
+        
+         /* The Modal (background) */
+            .modal {
+              display: none; /* Hidden by default */
+
+            }
+
+            /* Modal Content/Box */
+            .modal-content {
+              background-color: #fefefe;
+              margin: 15% auto; /* 15% from the top and centered */
+              padding: 20px;
+              border: 1px solid #888;
+              width: 80%; /* Could be more or less, depending on screen size */
+            }
+        
     </style>
+        
+        
         
     </head>
     
@@ -37,24 +59,36 @@
             <div class="nav-wrapper">
               <a href="#" class="brand-logo"><i class="material-icons">local_hospital</i></a>
               <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="sass.html">Sass</a></li>
-                <li><a href="badges.html">Components</a></li>
-                <li><a href="collapsible.html">JavaScript</a></li>
+                <li><a href="https://coronavirus.jhu.edu/us-map">Johns Hopkins Coronavirus Data</a></li>
+                <li><a href="https://coronavirus.jhu.edu/us-map">U.S.Map</a></li>
+                <!-- <li><a href="collapsible.html">JavaScript</a></li>-->
               </ul>
             </div>
         </nav>
         
-       
-    <div class="row">
-        <div class="col s12 m3 l3 indigo lighten-5">Graph</div>
-          <div id="map" style="height:540px;" class="col s12 m6 l6 indigo lighten-4">Map</div>
-          <div class="col s12 m3 l3 indigo lighten-3" id="mylist"></div>
+        <h2 style="padding-left: 10px;">COVID 19 Dashboard</h2>
+        <div class ="row">
+            <h5 style="padding-left: 10px;" class ="col l8">This software will provide timely information about the pandemic.</h5>
         </div>
-        
-        <h3>Covid-19 Dashboard</h3>
-        <p class="container">This software will provide timely info about the pandemic.</p>
-        <a href="http://cnn.com" target="_blank" style="width:300px; padding: 20px">CNN</a><br>
-        <img src="COVID.jpg" style="width:300px; padding: 20px"> <!-- inline -->
+       
+        <h6 style="margin-left: 10px">Top 5 Covid-19</h6>
+
+        <div class="row" style="margin: 10px; border-style: solid; border-bottom-width: 1; border-color: gainsboro;">
+
+        <div id="map" style="height:500px; padding:10px" class="col s12 m6 l6 indigo lighten-4">Map</div>
+            
+         <div class="col s12 m6 l6 indigo lighten-5" >
+            <canvas id="chartjs-2"></canvas>
+            <!--<div  id="mylist"></div>-->
+            <div class="card" style="margin:35px">
+                <div class="card-content">
+                  <span class="card-title">Explanation</span>
+                  <p>These cities and countries are the most affected geographic areas on earth according to John Hopkins University.</p>
+                </div>
+            </div>
+         </div>
+        </div>
+    
     
         <style>
             .page-footer{
@@ -67,17 +101,17 @@
           <div class="container">
             <div class="row">
               <div class="col l6 s12">
-                <h5 class="white-text">Footer Content</h5>
-                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                <h5 class="white-text">COVID 19 Dashboard</h5>
+                <!--<p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>-->
               </div>
               <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Contact</h5>
+                <h5 class="white-text">Links and Contact</h5>
                 <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!"></a></li>
-                     <a class="external" href="https://www.instagram.com/_xiyan.z/">Instegram</a> 
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://github.com/XiyanZhang9/COVID19">GitHub Repository</a>
+                  <li><a class="grey-text text-lighten-3" href="https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data" target="_blank">CSSEGISandData </a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://www.instagram.com/_xiyan.z/">Xiyan's Instagram</a>  
+                  <li><a class="grey-text text-lighten-3" href="#!">xiyanzhang9@gmail.com</a></li>
+                  
                 </ul>
               </div>
             </div>
@@ -85,17 +119,29 @@
           <div class="footer-copyright">
             <div class="container">
             © 2020 Copyright xzhang
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+             <!--<a class="grey-text text-lighten-4 right" href="#!">More Links</a>-->
             </div>
           </div>
         </footer>
     
+        <div id="myModal" class="modal">
+
+          <!-- Modal content -->
+          <div class="modal-content">
+            <p id="modaltext"></p>
+          </div>
+        
     </body>
     
      <script>
         
-        makelist();
+        mycolors = ['red','green','blue','orange','yellow'];
+        myrgb =['rgba(255,0,0,0.2)','rgba(0,255,0,0.2)','rgba(0,0,255,0.2)','rgba(252,186,3,0.2)','rgba(252,248,3,0.2)']
+        myrgbouts = ['rgb(255,0,0)','rgb(0,255,0)','rgb(0,0,255)','rgb(252,186,3)','rgb(252,248,3)']
+
+        //makelist2();
         makemap();
+        makechart();
          
         function makelist() {
             
@@ -103,11 +149,12 @@
             
             mylist = document.getElementById("mylist");
             
-            myhtml = "<ul class='collection'><h4>Top 5</h4>";
+            myhtml = "<ul class='collection'><h4>Top 5 </h4>";
+               
             // 3 parts of c for loop - 1) counter 2) loop cond. 3) increment or decrement
             for (i=0; i<5;i++) {
                 myhtml = myhtml + "<li class='collection-item avatar'>";
-                myhtml = myhtml + "<i class='material-icons circle'>adb</i>"
+                myhtml = myhtml + "<i class='material-icons circle'>add_location</i>"
                 if (data[i]['pname'] == "") {
                     myhtml = myhtml + "<b>" + data[i]['cname'] + "</b><br>";
                 } else {
@@ -120,6 +167,29 @@
             mylist.innerHTML = myhtml;
             
         }
+         
+        function makelist2() {
+
+            mylist = document.getElementById("mylist");
+
+            //myhtml = "<ul class='collection'><h3>Top 5</h3>";
+
+            // 3 parts of c for loop - 1) counter 2) loop cond. 3) increment or decrement
+
+            myhtml = "<span><i class='material-icons'>sentiment_very_dissatisfied</i>"
+            for (i=0; i<5;i++) {
+                if (data[i]['pname'] == "") {
+                    myhtml = myhtml + "<b>" + data[i]['cname'] + "</b><br>";
+                } else {
+                    myhtml = myhtml + "<b>" + data[i]['pname'] + ", " + data[i]['cname'] + "</b><br>";
+                }
+            }
+            myhtml = myhtml + "</span>";
+
+            mylist.innerHTML = myhtml;
+
+        }
+
     
         function makemap() {
             
@@ -134,15 +204,80 @@
             }).addTo(map);
         
             // step 5 
-            for (i=0;i<data.length;i++) {
+            for (i=0;i<5;i++) {
+
+                if (data[i]['pname'] == "") {
+                    bindy = "<h6>" + data[i]['cname'] + ": <h6>" + data[i]['conf'];
+                } else {
+                    bindy = "<h6>" + data[i]['pname'] + ", " + data[i]['cname'] + ": <h6>" + data[i]['conf']
+                }
+                
                 L.circle([data[i]['lat'], data[i]['lon']], {
-                color: 'red',
-                fillColor: '#f03',
-                fillOpacity: 0.5,
-                radius: data[i]['conf'] * 2
-                }).bindPopup(data[i]['cname'] + ": " + data[i]['conf'], { maxWidth: "auto"}).addTo(map);
+                color: mycolors[i],
+                //fillColor: '#f03',
+                fillOpacity: 0.2,
+                radius: data[i]['conf'] * 5
+                }).bindPopup(bindy, { maxWidth: "auto"}).addTo(map);
             }
           }
+         
+         function makechart() {
+            
+            //labels = ['nyc','moscow','france','iran','turkey'];
+            //mydata = [210000,207000,150000,120000,75000];
+
+            label5 = [];
+            data5 = [];
+            for (i=0;i<5;i++) {
+                if (data[i]['pname'] != "") {
+                   label5.push(data[i]['pname'] + ", " + data[i]['cname']); 
+                } else {
+                   label5.push(data[i]['cname']); 
+                }
+                data5.push(data[i]['conf']);
+            }
+            
+                        chart = new Chart(document.getElementById("chartjs-2"),{"type":"horizontalBar","data":{"labels": label5,"datasets":[{"label":"", "data": data5,"fill":false,"backgroundColor":myrgb,"borderColor":myrgbouts, "borderWidth":1}]} ,"options":{"scales":{"xAxes":[{"ticks":{"beginAtZero":true}}]},
+            onClick:function(e, items){
+            if ( items.length == 0 ) return; //Clicked outside any bar.
+            //openModal(items[0]['_model']['label']);
+            console.log(items[i]['_model']['label'])
+            },tooltips: {
+                custom: function(tooltip) {
+                    if (!tooltip) return;
+                    // disable displaying the color box;
+                    tooltip.displayColors = false;
+                  },
+                callbacks: {
+                    label: function(tooltipItem) {
+                        return "Cases: " + tooltipItem.xLabel;
+                    }
+                }   
+            },
+            title: {
+                  display: true,
+                  text: 'Confirmed cases',
+                  position: 'top'
+            }
+            }                                                       
+            });
+
+        }
+
+        function openModal(place) {
+            var modal = document.getElementById("myModal");
+            var modaltext = document.getElementById("modaltext");
+            modal.style.display = "block";
+            modaltext.innerHTML = place;
+        }
+
+        window.onclick = function(event) {
+          var modal = document.getElementById("myModal");
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+             
+        }
             
     </script>
 
